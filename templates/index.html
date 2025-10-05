@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wetlinks - URL Shortener</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+
+        body {
+            background-color: rgb(226, 247, 134);
+        }
+
+        body h1 {
+           
+            text-align: center;
+            font-size: 53px;
+        }
+
+        .formcontainer {
+            display: flex;
+            justify-content: center;
+            margin: 20px 20px;
+            font-size: 20px;
+            
+        }
+        .formcontainer .customcode{
+            margin-top: 10px;
+        }
+
+        .formcontainer form{
+            border: 2px ridge black;
+            border-radius: 2px;
+            background-color: rgb(251, 90, 53);
+            width: 200px;
+        }
+        .content{
+            margin: 23px auto;
+
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: blueviolet;
+            width: 300px;
+        }
+        a{
+            color: rgb(255, 255, 255);
+        }
+        a:visited{
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Wetlinks</h1>
+    <div class="formcontainer">
+        <form action="/shorten" method="post">
+            <input type="text" name="long_url" placeholder="Enter your long URL" required><br>
+            <input type="text" class="customcode" name="customcode" placeholder="Custom code (optional)">
+            <button type="submit">Shorten</button>
+        </form>
+    </div>
+    <div class="content">
+        {% if short_url %}
+        <p>Short URL: <a href="{{ short_url }}">{{ short_url }}</a></p>
+        {% endif %}
+
+
+        {% if stats %}
+        <h3>Stats:</h3>
+        <p>Original URL: {{ stats.long_url }}</p>
+        <p>Clicks: {{ stats.clicks }}</p>
+        <p>Created at: {{ stats.created_at }}</p>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>
