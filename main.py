@@ -52,7 +52,7 @@ def shorten_url(request: Request, long_url: str = Form(...), customcode: str = F
     )
     conn.commit()
 
-    return templates.TemplateResponse("index.html", {"request": request, "short_url": f"http://localhost:8000/{short_code}"})
+    return templates.TemplateResponse("index.html", {"request": request, "short_url": f"https://wetlinks-url-shortener.onrender.com/{short_code}"})
 
 
 @app.get("/{short_code}")
